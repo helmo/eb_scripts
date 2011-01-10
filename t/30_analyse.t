@@ -23,7 +23,7 @@ my $out = undef;
 
 $out = ImportRaboCsvHelper::analyse(\%hashrow);
 
-is($out, "rabobank 2008-01-11 \"FACTUURNR 2008001\" \n\tcrd \"ACME\" +92.23", "Some simple ACME case");
+is($out, "rabobank 2008-01-11 \"FACTUURNR 2008001\" \\\n\tcrd \"ACME\" +92.23", "Some simple ACME case");
 
 
 #  Test with Unknown corporation, ebcode will not be found
@@ -39,7 +39,7 @@ is($out, "rabobank 2008-01-11 \"FACTUURNR 2008001\" \n\tcrd \"ACME\" +92.23", "S
 
 $out = ImportRaboCsvHelper::analyse(\%hashrow);
 
-is($out, "rabobank 2008-01-11 \"FACTUURNR 2008001\" \n\tcrd \"UNKNOWN\" +92.23", "Unknown corporation");
+is($out, "rabobank 2008-01-11 \"FACTUURNR 2008001\" \\\n\tcrd \"UNKNOWN\" +92.23", "Unknown corporation");
 
 
 #  Test with Prive opname
@@ -55,7 +55,7 @@ is($out, "rabobank 2008-01-11 \"FACTUURNR 2008001\" \n\tcrd \"UNKNOWN\" +92.23",
 
 $out = ImportRaboCsvHelper::analyse(\%hashrow);
 
-is($out, "rabobank 2010-12-31 \"Winst uitkering\" \n\tstd \"Winst uitkering\" -1000.00 3120", "Prive opname");
+is($out, "rabobank 2010-12-31 \"Winst uitkering\" \\\n\tstd \"Winst uitkering\" -1000.00 3120", "Prive opname");
 
 #  Test with Prive storting
 %hashrow = (
@@ -70,7 +70,7 @@ is($out, "rabobank 2010-12-31 \"Winst uitkering\" \n\tstd \"Winst uitkering\" -1
 
 $out = ImportRaboCsvHelper::analyse(\%hashrow);
 
-is($out, "rabobank 2010-12-31 \"Extra cash injectie\" \n\tstd \"Extra cash injectie\" +1000.00 3110", "Prive storting");
+is($out, "rabobank 2010-12-31 \"Extra cash injectie\" \\\n\tstd \"Extra cash injectie\" +1000.00 3110", "Prive storting");
 
 #  Test with Rabobank kosten
 %hashrow = (
@@ -84,7 +84,7 @@ is($out, "rabobank 2010-12-31 \"Extra cash injectie\" \n\tstd \"Extra cash injec
         );
 $out = ImportRaboCsvHelper::analyse(\%hashrow);
 
-is($out, "rabobank 2010-01-01 \"Periode 01-10-2009 t/m 31-12-200\" \n\tcrd \"RABOBANK\" -42.42", "Banking costs");
+is($out, "rabobank 2010-01-01 \"Periode 01-10-2009 t/m 31-12-200\" \\\n\tcrd \"RABOBANK\" -42.42", "Banking costs");
 
 #  Test with uitgave
 %hashrow = (
@@ -98,7 +98,7 @@ is($out, "rabobank 2010-01-01 \"Periode 01-10-2009 t/m 31-12-200\" \n\tcrd \"RAB
         );
 $out = ImportRaboCsvHelper::analyse(\%hashrow);
 
-is($out, "rabobank 2010-01-14 \"BETALINGSKENM.  ARNL-1234567891- BETREFT*23456789 XS4ALL INTERNET BV\" \n\tcrd \"XS4ALL\" -39.95", "Regular outgoing");
+is($out, "rabobank 2010-01-14 \"BETALINGSKENM.  ARNL-1234567891- BETREFT*23456789 XS4ALL INTERNET BV\" \\\n\tcrd \"XS4ALL\" -39.95", "Regular outgoing");
 
 
 

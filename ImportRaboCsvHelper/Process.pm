@@ -62,7 +62,7 @@ sub analyse {
 
 	# Debet or Credit
 	my $sign = '';
-	$out .= ImportRaboCsvHelper::getBalansRekening() . " $hashrow{date} \"$hashrow{desc}\" \n";
+	$out .= ImportRaboCsvHelper::getBalansRekening() . " $hashrow{date} \"$hashrow{desc}\" \\\n";
 	if ( $hashrow{'debcred'} eq 'C' ) {
 		$sign = '+';
 
