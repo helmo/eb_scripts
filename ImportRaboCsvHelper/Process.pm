@@ -70,7 +70,7 @@ sub analyse {
 		$sign = '-';
 	}
 
-	# Handle the transaction based on it's bankcode
+	# Handle the transaction based on it's bankcode (See README for a list of bankcode abbreviations)
 
 	# Binnenkomend bedrag
 	if ( $hashrow{'bankcode'} =~ /(bg|cb)/i &&  $hashrow{'debcred'} eq 'C' ) {
@@ -98,7 +98,7 @@ sub analyse {
 	
 	# Overige uitgaande betalingen
 	} else {
-		# Overig, uitgaand codes o.a. 
+		# Overig, uitgaand codes o.a (See README for a full list of bankcode abbreviations)
 		# OV - overmaking  ( ook iDeal)
 		# MA - Machtiging
 		# GA - Geld automaat - muurpinnen
